@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 
+// rafce ファンクショナルコンポーネントを作成
 export default function Home() {
   return (
     <Layout title="Home">
