@@ -1,7 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
+import { NextComponentType, NextPageContext } from "next";
 
-export default function Layout({ children, title = "HP by Next.js" }) {
+interface Attributes {
+  children: any;
+  title: string;
+}
+
+const Layout: NextComponentType<NextPageContext, {}, Attributes> = ({
+  children,
+  title,
+}) => {
   return (
     <div className="flex justify-center items-center flex-col min-h-screen text-gray-600 text-sm font-mono">
       <Head>
@@ -46,4 +55,6 @@ export default function Layout({ children, title = "HP by Next.js" }) {
       </footer>
     </div>
   );
-}
+};
+
+export default Layout;

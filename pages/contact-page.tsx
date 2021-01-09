@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
 
-export default function Contact() {
+import { NextPage } from "next";
+
+const Contact: NextPage = () => {
   return (
     <Layout title="Contact">
       <div className="bg-white text-center shadow-xl p-8 w-80 rounded">
@@ -79,4 +81,6 @@ export default function Contact() {
       </div>
     </Layout>
   );
-}
+};
+
+export default Contact;

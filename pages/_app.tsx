@@ -1,8 +1,10 @@
 import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
 
-function MyApp({ Component, pageProps }) {
+import { AppProps } from "next/app";
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
-}
+};
 
 export default MyApp;

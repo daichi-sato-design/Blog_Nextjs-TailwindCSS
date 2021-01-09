@@ -1,8 +1,18 @@
 import Layout from "../components/Layout";
 import Post from "../components/post";
 import { getAllPostsData } from "../lib/posts";
+import { NextPage } from "next";
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
-export default function Blog({ posts }) {
+interface PROPS {
+  posts: POST[];
+}
+interface POST {
+  id: string;
+  title: string;
+}
+
+const Blog: NextPage<PROPS> = ({ posts }) => {
   return (
     <Layout title="Blog">
       <ul className="m-10">
@@ -10,11 +20,13 @@ export default function Blog({ posts }) {
       </ul>
     </Layout>
   );
-}
+};
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllPostsData();
   return {
     props: { posts },
   };
-}
+};
+
+export default Blog;

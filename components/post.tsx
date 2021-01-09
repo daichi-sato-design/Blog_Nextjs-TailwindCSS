@@ -1,6 +1,16 @@
 import Link from "next/link";
+import { NextComponentType, NextPageContext } from "next";
 
-export default function Post({ post }) {
+interface Attributes {
+  post: POST;
+}
+
+interface POST {
+  id: string;
+  title: string;
+}
+
+const Post: NextComponentType<NextPageContext, {}, Attributes> = ({ post }) => {
   return (
     <div>
       <span>{post.id}</span>
@@ -12,4 +22,6 @@ export default function Post({ post }) {
       </Link>
     </div>
   );
-}
+};
+
+export default Post;

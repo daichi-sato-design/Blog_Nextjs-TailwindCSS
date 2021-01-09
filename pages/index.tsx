@@ -1,10 +1,14 @@
+import { NextPage } from "next";
+
 import Layout from "../components/Layout";
 
 // rafce ファンクショナルコンポーネントを作成
-export default function Home() {
+const Home: NextPage = () => {
   return (
     <Layout title="Home">
       <p className="text-4xl">Welcome to Nextjs</p>
     </Layout>
   );
-}
+};
+
+export default Home;

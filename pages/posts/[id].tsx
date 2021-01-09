@@ -1,8 +1,20 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
-export default function Post({ post }) {
+import { NextPage } from "next";
+
+interface PROPS {
+  post: POST;
+}
+interface POST {
+  id: string;
+  title: string;
+  body: string;
+}
+
+const Post: NextPage<PROPS> = ({ post }) => {
   if (!post) {
     return <div className="text-sm">Loading...</div>;
   }
@@ -37,22 +49,23 @@ export default function Post({ post }) {
       </Link>
     </Layout>
   );
-}
+};
 
-export async function getStaticPaths() {
+export default Post;
+
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllPostIds();
-
   return {
     paths,
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { post: post } = await getPostData(params.id);
   return {
     props: {
       post,
     },
   };
-}
+};
